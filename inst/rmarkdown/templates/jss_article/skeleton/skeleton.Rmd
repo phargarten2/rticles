@@ -25,20 +25,23 @@ keywords:
 preamble: >
   \usepackage{amsmath}
 output: rticles::jss_article
+bibliography: sample.bib
 ---
 
 # Introduction
 
 This template demonstrates some of the basic latex you'll need to know to create a JSS article.
 
-## Code formatting
+
+# Code formatting
 
 Don't use markdown, instead use the more precise latex commands:
 
 * \proglang{Java}
 * \pkg{plyr}
 * \code{print("abc")}
-
+*  We use R \citep{rcoreteamLanguageEnvironmentStatistical2018}. natbib is the latex reference package here...
+ 
 # R code
 
 Can be inserted in regular R markdown blocks.
@@ -47,3 +50,14 @@ Can be inserted in regular R markdown blocks.
 x <- 1:10
 x
 ```
+
+# Add Figure References to the document. 
+
+```{r figs, echo=FALSE, fig.width=7,fig.height=6,fig.cap="\\label{fig:dens} plotting example"}
+par(mfrow=c(2,2))
+plot(1:10, col=2)
+plot(density(runif(100, 0.0, 1.0)))
+plot(runif(100, 0.0, 1.0),type="l")
+```
+Don't say Figure 1, instead use a figure label ... In Figure \ref{fig:dens}, ...
+
